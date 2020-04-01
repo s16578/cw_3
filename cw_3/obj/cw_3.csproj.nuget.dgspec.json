@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Adam\\source\\repos\\Cw_3\\cw_3\\cw_3\\cw_3.csproj": {}
+    "C:\\Users\\Adam\\source\\repos\\Cw_3\\cw_3\\cw_3.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Adam\\source\\repos\\Cw_3\\cw_3\\cw_3\\cw_3.csproj": {
+    "C:\\Users\\Adam\\source\\repos\\Cw_3\\cw_3\\cw_3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Adam\\source\\repos\\Cw_3\\cw_3\\cw_3\\cw_3.csproj",
+        "projectUniqueName": "C:\\Users\\Adam\\source\\repos\\Cw_3\\cw_3\\cw_3.csproj",
         "projectName": "cw_3",
-        "projectPath": "C:\\Users\\Adam\\source\\repos\\Cw_3\\cw_3\\cw_3\\cw_3.csproj",
+        "projectPath": "C:\\Users\\Adam\\source\\repos\\Cw_3\\cw_3\\cw_3.csproj",
         "packagesPath": "C:\\Users\\Adam\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Adam\\source\\repos\\Cw_3\\cw_3\\cw_3\\obj\\",
+        "outputPath": "C:\\Users\\Adam\\source\\repos\\Cw_3\\cw_3\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -64,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
