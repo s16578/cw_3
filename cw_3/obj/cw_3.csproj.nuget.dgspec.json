@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Adam\\source\\repos\\Cw_3\\cw_3\\cw_3.csproj": {}
+    "C:\\Users\\adamd\\Desktop\\APBD\\cw_3\\cw_3\\cw_3.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Adam\\source\\repos\\Cw_3\\cw_3\\cw_3.csproj": {
+    "C:\\Users\\adamd\\Desktop\\APBD\\cw_3\\cw_3\\cw_3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Adam\\source\\repos\\Cw_3\\cw_3\\cw_3.csproj",
+        "projectUniqueName": "C:\\Users\\adamd\\Desktop\\APBD\\cw_3\\cw_3\\cw_3.csproj",
         "projectName": "cw_3",
-        "projectPath": "C:\\Users\\Adam\\source\\repos\\Cw_3\\cw_3\\cw_3.csproj",
-        "packagesPath": "C:\\Users\\Adam\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Adam\\source\\repos\\Cw_3\\cw_3\\obj\\",
+        "projectPath": "C:\\Users\\adamd\\Desktop\\APBD\\cw_3\\cw_3\\cw_3.csproj",
+        "packagesPath": "C:\\Users\\adamd\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\adamd\\Desktop\\APBD\\cw_3\\cw_3\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Adam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\adamd\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -44,6 +41,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.1, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.1, )"
             }
           },
           "imports": [
