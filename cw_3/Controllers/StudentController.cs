@@ -98,13 +98,14 @@ namespace cw_3.Controllers
             return Ok($"Student with {id} idenx has been added");
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetSemesterByIndex(int id)
+        [HttpGet("{index}")]
+        public IActionResult GetSemesterByIndex(string index)
+        
         {
             using(var client = new SqlConnection("Data Source=db-mssql.pjwstk.edu.pl;Initial Catalog=s16578;Integrated Security=TRUE"))
+                
                 try
                 {
-                    string semester;
                     using(var command = new SqlCommand())
                     {
                         command.Connection = client;
@@ -114,18 +115,21 @@ namespace cw_3.Controllers
                             "ON e.IdEnrollment = s.IdEnrollment " +
                             "INNER JOIN Studies st " +
                             "ON e.IdStudy = st.IdStudy " +
-                            $"WHERE s.IndexNumber = {id};";
+                            "WHERE s.IndexNumber = @index;";
+                        command.Parameters.Add("@index", System.Data.SqlDbType.VarChar, 20).Value = index;
+                        //command.Parameters.AddWithValue("index", index);
 
                         client.Open();
                         var dataRead = command.ExecuteReader();
 
-                        semester = dataRead["Semester"].ToString();
-                        return Ok($"Student with id = {id} is on: " + semester + " semester");
+
+                        string semester = dataRead["Semester"].ToString();
+                        return Ok($"Student with id = {index} is on: " + semester + " semester");
                     }
                 }
                 catch(InvalidOperationException)
                 {
-                    return Ok($"There is no Student with id = {id}");
+                    return Ok($"There is no Student with id = {index}");
                 }
         }
 
