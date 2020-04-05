@@ -24,11 +24,11 @@ namespace cw_3.Controllers
             using (var com = new SqlCommand())
             {
                 com.Connection = client;
-                com.CommandText = "SELECT s.FirstName AS FirstName, s.LastName AS LastName, s.BirthDate AS BirthDate, st.Name AS Name, e.Semester AS Semester"+
-                                  " FROM Enrollment AS e"+
-                                  " INNER JOIN Student AS s"+
-                                  " ON e.IdEnrollment = s.IdEnrollment"+
-                                  " INNER JOIN Studies st"+
+                com.CommandText = "SELECT s.FirstName AS FirstName, s.LastName AS LastName, s.BirthDate AS BirthDate, st.Name AS Name, e.Semester AS Semester" +
+                                  " FROM Enrollment AS e" +
+                                  " INNER JOIN Student AS s" +
+                                  " ON e.IdEnrollment = s.IdEnrollment" +
+                                  " INNER JOIN Studies st" +
                                   " ON e.IdStudy = st.IdStudy";
 
                 client.Open();
@@ -48,39 +48,39 @@ namespace cw_3.Controllers
                 }
 
                 StringBuilder sb = new StringBuilder();
-                
-                foreach(Student s in students)
+
+                foreach (Student s in students)
                 {
-                    sb.Append("name:"+s.FirstName +
+                    sb.Append("name:" + s.FirstName +
                               " last name:" + s.LasteName +
                               " birth date: " + s.BirthDate +
                               " study name:" + s.StudyName +
                               " semester:" + s.Semester);
                     sb.AppendLine();
                 }
-                
+                dataRead.Close();
                 return sb.ToString();
 
             }
 
         }
 
-        [HttpGet("{id}")]
+        //[HttpGet("{id}")]
 
-        public IActionResult GetStudents(int id)
-    {
-            if (id == 1)
-                return Ok("kowalski");
-            else if (id == 2)
-                return Ok("malczewski");
-            return NotFound("missing student");
-        
-    }
+        //public IActionResult GetStudents(int id)
+        //{
+        //    if (id == 1)
+        //        return Ok("kowalski");
+        //    else if (id == 2)
+        //        return Ok("malczewski");
+        //    return NotFound("missing student");
+
+        //}
         [HttpPost]
 
         public IActionResult CreateStudent(Student student)
         {
-         // student.IndexNumber = $"s{new Random().Next(1, 1000)}";
+            // student.IndexNumber = $"s{new Random().Next(1, 1000)}";
             return Ok(student);
         }
 
@@ -96,6 +96,37 @@ namespace cw_3.Controllers
         public IActionResult InserStudent(int id)
         {
             return Ok($"Student with {id} idenx has been added");
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetSemesterByIndex(int id)
+        {
+            using(var client = new SqlConnection("Data Source=db-mssql.pjwstk.edu.pl;Initial Catalog=s16578;Integrated Security=TRUE"))
+                try
+                {
+                    string semester;
+                    using(var command = new SqlCommand())
+                    {
+                        command.Connection = client;
+                        command.CommandText = "SELECT e.Semester AS Semester " +
+                            "FROM Enrollment AS e " +
+                            "INNER JOIN Student AS s " +
+                            "ON e.IdEnrollment = s.IdEnrollment " +
+                            "INNER JOIN Studies st " +
+                            "ON e.IdStudy = st.IdStudy " +
+                            $"WHERE s.IndexNumber = {id};";
+
+                        client.Open();
+                        var dataRead = command.ExecuteReader();
+
+                        semester = dataRead["Semester"].ToString();
+                        return Ok($"Student with id = {id} is on: " + semester + " semester");
+                    }
+                }
+                catch(InvalidOperationException)
+                {
+                    return Ok($"There is no Student with id = {id}");
+                }
         }
 
     }
