@@ -120,16 +120,20 @@ namespace cw_3.Controllers
                         //command.Parameters.AddWithValue("index", index);
 
                         client.Open();
-                        var dataRead = command.ExecuteReader();
+                        var dataReader = command.ExecuteReader();
+                        string semester;
 
-
-                        string semester = dataRead["Semester"].ToString();
-                        return Ok($"Student with id = {index} is on: " + semester + " semester");
+                        while (dataReader.Read())
+                        {
+                            semester = dataReader["Semester"].ToString();
+                            return Ok($"Student with id = {index} is on: " + semester + " semester");
+                        }
+                        return NotFound($"There is no Student with id = {index}");
                     }
                 }
                 catch(InvalidOperationException)
                 {
-                    return Ok($"There is no Student with id = {index}");
+                    return NotFound($"There is no Student with id = {index}");
                 }
         }
 
